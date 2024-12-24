@@ -18,62 +18,66 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<header class="header">
-    <nav class="nav">
-      <img src="img/logo.png" alt="Bankist logo" class="nav__logo" id="logo" designer ="kamlesh"
-      data-version-number="3.0" />
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <img
+          src="img/logo.png"
+          alt="Bankist logo"
+          class="nav__logo"
+          id="logo"
+        />
+        <ul class="nav__links">
+          <li class="nav__item">
+            <a class="nav__link" href="#section--1">Features</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--2">Operations</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--3">Testimonials</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link nav__link--btn btn--show-modal" href="#"
+              >Open account</a
+            >
+          </li>
+        </ul>
+      </nav>
 
-      <ul class="nav__links">
-        <li class="nav__items">
-          <a href="#section--1" class="nav__link">Features</a>
-        </li>
-        <li class="nav__items">
-          <a href="#section--2" class="nav__link">Operations</a>
-        </li>
-        <li class="nav__items">
-          <a href="#section--3" class="nav__link">Testimonials</a>
-        </li>
-        <li class="nav__items">
-          <a href="#section--4" class="nav__link nav__link--btn">Open account</a>
-        </li>
-        
-      </ul>
-    </nav>
-    <!-- header title begin -->
-     <div class="header__title">
-      <!-- <h1 onclick ="alert('HTML alert')">-->
+      <div class="header__title">
         <h1>
           When
           <!-- Green highlight effect -->
-           <span class="highlight ">banking</span>
-            meets <br/>
-           <span class="highlight">minimalist</span>
+          <span class="highlight">banking</span>
+          meets<br />
+          <span class="highlight">minimalist</span>
         </h1>
-          <h4>A simpler Banking experience for a simpler life.</h4>
-
-          <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
-          <img src="/img/hero.png" alt="Minimalist bank items" class="header__img">
+        <h4>A simpler banking experience for a simpler life.</h4>
+        <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
+        <img
+          src="img/hero.png"
+          class="header__img"
+          alt="Minimalist bank items"
+        />
       </div>
-  </header>
+    </header>
 
-  <!--  section 1 -->
+    <section class="section" id="section--1">
+      <div class="section__title">
+        <h2 class="section__description">Features</h2>
+        <h3 class="section__header">
+          Everything you need in a modern bank and more.
+        </h3>
+      </div>
 
-  <section class="section" id="section--1">
-    <div class="section__title">
-      <h2 class="section__description">Features</h2>
-      <h3 class="section__header">
-         Everything you need in a modern bank and more.
-      </h3>
-    </div>
-
-     <div class="features">
-       <img
+      <div class="features">
+        <img
           src="img/digital-lazy.jpg"
           data-src="img/digital.jpg"
           alt="Computer"
           class="features__img lazy-img"
         />
-
         <div class="features__feature">
           <div class="features__icon">
             <svg>
@@ -87,8 +91,6 @@
             debitis ducimus.
           </p>
         </div>
-        
-        <!-- 2 image section 1-->
 
         <div class="features__feature">
           <div class="features__icon">
@@ -96,11 +98,11 @@
               <use xlink:href="img/icons.svg#icon-trending-up"></use>
             </svg>
           </div>
-          <h5 class="features__header">100% digital bank</h5>
+          <h5 class="features__header">Watch your money grow</h5>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde alias
-            sint quos? Accusantium a fugiat porro reiciendis saepe quibusdam
-            debitis ducimus.
+            Nesciunt quos autem dolorum voluptates cum dolores dicta fuga
+            inventore ab? Nulla incidunt eius numquam sequi iste pariatur
+            quibusdam!
           </p>
         </div>
         <img
@@ -109,14 +111,13 @@
           alt="Plant"
           class="features__img lazy-img"
         />
-        <!-- img 3 section 1 -->
+
         <img
           src="img/card-lazy.jpg"
           data-src="img/card.jpg"
           alt="Credit card"
           class="features__img lazy-img"
         />
-        
         <div class="features__feature">
           <div class="features__icon">
             <svg>
@@ -131,11 +132,17 @@
           </p>
         </div>
       </div>
-  </section>
+    </section>
 
-  <!-- operatinal section start -->
-    <section class="operations">
-        
+    <section class="section" id="section--2">
+      <div class="section__title">
+        <h2 class="section__description">Operations</h2>
+        <h3 class="section__header">
+          Everything as simple as possible, but no simpler.
+        </h3>
+      </div>
+
+      <div class="operations">
         <div class="operations__tab-container">
           <button
             class="btn operations__tab operations__tab--1 operations__tab--active"
@@ -150,7 +157,6 @@
             <span>03</span>Instant Closing
           </button>
         </div>
-
         <div
           class="operations__content operations__content--1 operations__content--active"
         >
@@ -202,10 +208,10 @@
             ea commodo consequat.
           </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- slider section start -->
-         <section class="section" id="section--3">
+    <section class="section" id="section--3">
       <div class="section__title section__title--testimonials">
         <h2 class="section__description">Not sure yet?</h2>
         <h3 class="section__header">
@@ -214,7 +220,7 @@
       </div>
 
       <div class="slider">
-        <div class="slide">
+        <div class="slide slide--1">
           <div class="testimonial">
             <h5 class="testimonial__header">Best financial decision ever!</h5>
             <blockquote class="testimonial__text">
@@ -233,7 +239,7 @@
           </div>
         </div>
 
-        <div class="slide">
+        <div class="slide slide--2">
           <div class="testimonial">
             <h5 class="testimonial__header">
               The last step to becoming a complete minimalist
@@ -253,7 +259,7 @@
           </div>
         </div>
 
-        <div class="slide">
+        <div class="slide slide--3">
           <div class="testimonial">
             <h5 class="testimonial__header">
               Finally free from old-school banks
@@ -274,6 +280,10 @@
           </div>
         </div>
 
+        <!-- <div class="slide"><img src="img/img-1.jpg" alt="Photo 1" /></div>
+        <div class="slide"><img src="img/img-2.jpg" alt="Photo 2" /></div>
+        <div class="slide"><img src="img/img-3.jpg" alt="Photo 3" /></div>
+        <div class="slide"><img src="img/img-4.jpg" alt="Photo 4" /></div> -->
         <button class="slider__btn slider__btn--left">&larr;</button>
         <button class="slider__btn slider__btn--right">&rarr;</button>
         <div class="dots"></div>
@@ -320,9 +330,9 @@
         <a
           class="footer__link twitter-link"
           target="_blank"
-          href="https://twitter.com/jonasschmedtman"
+          href="#"
           >Kamlesh singh bisht</a
-        >.It is for my learning portfolio.I am learning the javaScript
+        >. I am Use for learning or your portfolio. 
       </p>
     </footer>
 
@@ -344,7 +354,7 @@
     </div>
     <div class="overlay hidden"></div>
 
-  
-   <!-- <script src="script.js"></script> -->
-</body>
+    <script src="script.js"></script>
+  </body>
+
 </html>

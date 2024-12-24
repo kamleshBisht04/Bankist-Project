@@ -127,7 +127,14 @@ img {
   display: flex;
   list-style: none;
   align-items: center;
+  /* width: 45%; */
+  /* justify-content: space-evenly; */
 }
+
+.nav__link{
+ margin-right: 4rem;
+}
+
 
 .nav__items{
   margin-left: 4rem;
@@ -140,7 +147,9 @@ img {
   height: 9rem;
   width: 100%;
   padding: 0 6rem;
-  /* z-index: 100; */
+ 
+  z-index: 100;
+  
 }
 
 .nav__link:link,

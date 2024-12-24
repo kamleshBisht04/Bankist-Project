@@ -2,6 +2,7 @@
 :root{
   --color-primary:#5ec576;
   --color-primary-darker:#4bbb7d;
+  --color-primary-opacity: #5ec5763a;
    --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
 }
 
@@ -190,4 +191,39 @@ h4{
 
 
 /* FEATURES */
+
+.features{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin: 0 12rem;
+}
+
+.features__img{
+  width: 100%;
+}
+
+.features__feature{
+  align-self: center;
+  justify-self: center;
+  width: 72%;
+  font-size: 1.5rem;
+}
+
+.features__icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5.5rem;
+  width: 5.5rem;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  background-color: var(--color-primary-opacity);
+}
+
+.features__icon  svg{
+  height: 2.5rem;
+  width: 2.5rem;
+  fill: var(--color-primary);
+}
 

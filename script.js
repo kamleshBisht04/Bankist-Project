@@ -9,7 +9,7 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
 const openModal = function (e) {
-  e.preventDefault()
+  e.preventDefault();             
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
@@ -36,6 +36,115 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+//////////////  ==> Quick reference for future 
+
+// 1 .selecting element (dom object)
+
+// selecting whole entire document css inwhole doc 
+console.log(document.documentElement);
+
+// selecting the head and body
+console.log(document.head);
+console.log(document.body);
+
+// quarySelector
+const header =document.querySelector('.header');
+console.log(header);
+
+// quaryselectorAll for multiple document 
+// nodelist 
+const allSection = document.querySelectorAll('.section');
+console.log(allSection);
+
+// id selector
+document.getElementById('section--1');
+
+// tag selector (selection button tag) return htmlcollections live collection => dom changes => collection change 
+const allButtons = document.getElementsByTagName('button');
+console.log(allButtons);
+
+// class selector
+console.log(document.getElementsByClassName('btn'));
+
+
+//////////////////////////////////////////////
+
+// creating and inserting element 
+
+// in movement section 
+// .insertAdjacentHTML
+
+// ADDING MOVEMENTS IN THE SCROLL BAR
+const displayMovements = function(movements ,sort=false){
+  containerMovements.innerHTML = ' ';
+  //.textContent = 0
+  // SORT IN ASSIENDING  SICE SHELLO COPY BUT SORT CHANGE UNDERLAYING DATA
+  const movs= sort ? movements.slice().sort( (a,b)=> a-b) : movements;
+
+ movs.forEach(function(mov,i){
+  const type =mov > 0 ?'deposit' : 'withdrawal'
+  const html = `
+   <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${i + 1}
+        ${type}</div>
+        
+        <div class="movements__value">${mov} ₹</div>
+      </div>
+  `;
+  containerMovements.insertAdjacentHTML("afterbegin",html)
+
+ });
+};
+
+
+//-------------------------------------------------
+// 2 way to creating element 
+
+const message = document.createElement('div');
+// manually insert it before it in not any where in dom object
+// adding class 
+message.classList.add('cookie-message');
+// this insert simply text
+message.textContent="we use cookied for improved functionality and analytics."
+// also insert innerHtmlTag
+message.innerHTML=`we use cookied for improved functionality and analytics. <button class="btn btn-close--cookie">Got it!</button>`;
+// adding inside the header
+// header.prepend(message);                 // first child
+header.append(message);                  // last child 
+// it append ones in the html document   // live element 
+// insert multiple copy if we want 
+// header.append(message.cloneNode(true));
+
+// 2 more method befor and after 
+
+// header.before(message);
+// header.after(message);
+
+// DELETE THE ELEMENTS
+
+document.querySelector('.btn-close--cookie').addEventListener('click',()=>{
+  message.remove();
+});
+
+// old ways
+// message.parentElement.removeChild(message);
+
+
+
+/////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+
 
 
 

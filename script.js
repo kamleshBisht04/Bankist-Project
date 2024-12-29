@@ -8,6 +8,8 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
+
+
 const openModal = function (e) {
   e.preventDefault();             
   modal.classList.remove('hidden');
@@ -37,9 +39,60 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+//////    SMOOTH SCROLLING   ---------------->
+
+const btnScrollTo =document.querySelector('.btn--scroll-to');
+const section1=document.querySelector('#section--1');
+
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.scrollX, window.scrollY);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.scrollX,
+  //   s1coords.top + window.scrollY
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
 
 
 
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////
+
+
+
+
+
+
+/*
 
 /////////////////////////////////////////////////////////////
 //////////////  ==> Quick reference for future 
@@ -130,20 +183,84 @@ header.append(message);                  // last child
 
 document.querySelector('.btn-close--cookie').addEventListener('click',()=>{
   message.remove();
+   // old ways
+  // message.parentElement.removeChild(message);
 });
 
-// old ways
-// message.parentElement.removeChild(message);
+//----------------------------------------------------------
+// STYLES ATTRIBTES AND CLASSES IN DOM
+
+//style
+// set as inline style direcltly in Dom
+message.style.backgroundColor = '#37383d';
+message.style.width='120%';
+
+// it doen't work because we are not setting it inline 
+console.log(message.style.color);
+console.log(message.style.height);
+console.log(message.style.backgroundColor);
+
+// we can get style use getComputedStyle() function
+
+console.log(getComputedStyle(message).color);
+// we are not define but brower calculated the height.
+console.log(getComputedStyle(message).height); 
+
+// setting the height of the message element 
+message.style.height= Number.parseFloat(getComputedStyle(message).height)+40+"px";
+
+// css custom property === css variables 
+// change the clour of page by setting ones
+// we can set all type of properties 
+document.documentElement.style.setProperty('--color-primary','orange');
+
+// Attributes
+// we can acess the attributes of the element (html)
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+
+// also set the attributes
+logo.alt='Beautiful minimalist logo';
+
+// non-standard
+console.log(logo.designer); // undefine not standerd propety
+//reading from the Dom 
+console.log(logo.getAttribute('designer'));
+// setting new attributes in Dom object
+logo.setAttribute('company','Bankist');
+
+// getting the href relative url of dom use getAttribute
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+// same for href attrubutes in link
+const link = document.querySelector('.nav__link--btn');
+
+console.log(link.href); // absolute url
+console.log(link.getAttribute('href'));// relative url
+
+// Data attributes (special attributes)
+// read from logo we set it data variable
+// work with ui and store data in html userinterface
+console.log(logo.dataset.versionNumber);
+
+// classes IN DOM
+logo.classList.add('c','j'); // pass multiple class
+logo.classList.remove('c');
+logo.classList.toggle('c');
+logo.classList.contains('c');
 
 
-
+*/
 /////////////////////////////////////////////////////////////
 
 
 
 
 
-/////////////////////////////////////////////////////////////
+
 
 
 

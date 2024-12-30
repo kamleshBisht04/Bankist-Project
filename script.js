@@ -39,25 +39,31 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+
+//////////////////////////////////////////////////////////////////////
+
 //////    SMOOTH SCROLLING   ---------------->
 
 const btnScrollTo =document.querySelector('.btn--scroll-to');
 const section1=document.querySelector('#section--1');
 
+btnScrollTo.addEventListener('click',function(e){
 
-btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
+  // learning about section cordinates and scrollx and Y cordinatec || 
+  // current scroll|| height and width of viewPort 
+  
+  const s1coords= section1.getBoundingClientRect();
   console.log(s1coords);
 
   console.log(e.target.getBoundingClientRect());
 
-  console.log('Current scroll (X/Y)', window.scrollX, window.scrollY);
+  console.log('current scroll X/Y : ', window.scrollX,window.scrollY);
 
-  console.log(
-    'height/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
+  console.log('Height/Width of viewPort : ',
+                              document.documentElement.clientHeight,
+                              document.documentElement.clientWidth
   );
+
 
   // Scrolling
   // window.scrollTo(
@@ -66,12 +72,12 @@ btnScrollTo.addEventListener('click', function (e) {
   // );
 
   // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
+  //   left: s1coords.left + window.scrollX,
+  //   top: s1coords.top + window.scrollY,
   //   behavior: 'smooth',
   // });
 
-  section1.scrollIntoView({ behavior: 'smooth' });
+  section1.scrollIntoView({behavior :'smooth'});
 });
 
 
@@ -85,13 +91,15 @@ btnScrollTo.addEventListener('click', function (e) {
 
 
 
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////////////////
-
-
-
-
-
-
 /*
 
 /////////////////////////////////////////////////////////////
@@ -166,7 +174,8 @@ message.classList.add('cookie-message');
 // this insert simply text
 message.textContent="we use cookied for improved functionality and analytics."
 // also insert innerHtmlTag
-message.innerHTML=`we use cookied for improved functionality and analytics. <button class="btn btn-close--cookie">Got it!</button>`;
+message.innerHTML=`we use cookied for improved functionality and analytics. 
+                   <button class="btn btn-close--cookie">Got it!</button>`;
 // adding inside the header
 // header.prepend(message);                 // first child
 header.append(message);                  // last child 

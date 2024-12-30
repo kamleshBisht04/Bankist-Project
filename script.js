@@ -63,24 +63,29 @@ btnScrollTo.addEventListener('click',function(e){
                               document.documentElement.clientHeight,
                               document.documentElement.clientWidth
   );
+  
 
+  // fuction calculating distance but not from top
+  // window.scrollTo(s1coords.left,s1coords.top);
 
   // Scrolling
   // window.scrollTo(
   //   s1coords.left + window.scrollX,
   //   s1coords.top + window.scrollY
   // );
+ 
+  //---------------- older way to scroll the section
 
   // window.scrollTo({
   //   left: s1coords.left + window.scrollX,
   //   top: s1coords.top + window.scrollY,
   //   behavior: 'smooth',
   // });
-
+   //------------------mordern way to scroll
   section1.scrollIntoView({behavior :'smooth'});
 });
 
-
+//////////////////////////////////////////////////////////////////////
 
 
 

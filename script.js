@@ -8,6 +8,9 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
+const btnScrollTo =document.querySelector('.btn--scroll-to');
+const section1=document.querySelector('#section--1');
+
 
 
 const openModal = function (e) {
@@ -44,25 +47,22 @@ document.addEventListener('keydown', function (e) {
 
 //////    SMOOTH SCROLLING   ---------------->
 
-const btnScrollTo =document.querySelector('.btn--scroll-to');
-const section1=document.querySelector('#section--1');
-
 btnScrollTo.addEventListener('click',function(e){
 
   // learning about section cordinates and scrollx and Y cordinatec || 
   // current scroll|| height and width of viewPort 
   
-  const s1coords= section1.getBoundingClientRect();
-  console.log(s1coords);
+  // const s1coords= section1.getBoundingClientRect();
+  // console.log(s1coords);
 
-  console.log(e.target.getBoundingClientRect());
+  // console.log(e.target.getBoundingClientRect());
 
-  console.log('current scroll X/Y : ', window.scrollX,window.scrollY);
+  // console.log('current scroll X/Y : ', window.scrollX,window.scrollY);
 
-  console.log('Height/Width of viewPort : ',
-                              document.documentElement.clientHeight,
-                              document.documentElement.clientWidth
-  );
+  // console.log('Height/Width of viewPort : ',
+  //                             document.documentElement.clientHeight,
+  //                             document.documentElement.clientWidth
+  // );
   
 
   // fuction calculating distance but not from top
@@ -89,30 +89,116 @@ btnScrollTo.addEventListener('click',function(e){
 // Event Delegation implementing page 
 // Page navigation
 
-document.querySelectorAll('.nav__link').forEach((el)=>{
-  el.addEventListener('click',function(e){
-    e.preventDefault();
-    const id = e.target.getAttribute('href');
-    console.log(id);
+// document.querySelectorAll('.nav__link').forEach((el)=>{
+//   el.addEventListener('click',function(e){
+//     e.preventDefault();
+//     const id = e.target.getAttribute('href');
+//     console.log(id);
 
-    document.querySelector(id).scrollIntoView({behavior : 'smooth'});
-  });
-});
+//     document.querySelector(id).scrollIntoView({behavior : 'smooth'});
+//   });
+// });
 
 // Better way to do it using event delegation
-// 1 .Add event listener to common parent element
-// 2 .Determine what element the event 
 
-document.querySelector('.nav__links').addEventListener('click',function(el){
-  el.preventDefault();
-   
-  // matching strategy // this ==+ e.target
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
 
-  if(this.classList.contains('.nav__link')){
-   const id = this.getAttribute('href');
-   document.querySelector(id).scrollIntoView({behavior : 'Smooth'});
+
+document.querySelector('.nav__links').addEventListener('click',function(e){
+  e.preventDefault();
+  // console.log(e.target);
+
+  // Matching strategy
+
+  if(e.target.classList.contains('nav__link')){
+    const id = e.target.getAttribute('href');
+    // console.log(id);
+    document.querySelector(id).scrollIntoView({behavior : 'smooth'});
   };
 });
+
+
+
+///////////////////////////////////////
+// Tabbed component
+
+
+
+
+
+
+
+
+
+
+
+// const tabs = document.querySelectorAll('.operations__tab');
+// const tabsContainer = document.querySelector('.operations__tab-container');
+// const tabsContent = document.querySelectorAll('.operations__content');
+
+// tabsContainer.addEventListener('click', function (e) {
+//   const clicked = e.target.closest('.operations__tab');
+
+//   // Guard clause
+//   if (!clicked) return;
+
+//   // Remove active classes
+//   tabs.forEach(t => t.classList.remove('operations__tab--active'));
+//   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+//   // Activate tab
+//   clicked.classList.add('operations__tab--active');
+
+//   // Activate content area
+//   document
+//     .querySelector(`.operations__content--${clicked.dataset.tab}`)
+//     .classList.add('operations__content--active');
+// });
+
+
+
+
+/////////////////////////////////////////////////////////
+// Reference lacture for 
+// ------------- DOM TRAVERSING ------------
+
+const h1= document.querySelector('h1');
+
+// GOING DOWNWORDS (---DEEPER IN DOM SELECTING)
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color ='orange';
+
+
+// GOING UPWARDS : SELECTING THE PARENT
+
+console.log(h1.parentElement);
+console.log(h1.parentNode);
+
+h1.closest('.header').style.background ="var(--gradient-secondary)";
+h1.closest('h1').style.background ="var(--gradient-primary)";
+
+//GOING SIDEWAYS : SIBLINGS
+
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling.style.color ='white');
+
+console.log(h1.parentElement.children);
+
+[...h1.parentElement.children].forEach(function(e){
+  if(e!== h1){
+    e.style.transform= 'scale(0.5)';
+  }
+})
+
+
+
+
+
 
 
 
@@ -342,27 +428,6 @@ document.querySelector('.nav').addEventListener('click',function(e){
 
 
 
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   });
-// });
-
-// 1. Add event listener to common parent element
-// 2. Determine what element originated the event
-
-// document.querySelector('.nav__links').addEventListener('click', function (e) {
-//   e.preventDefault();
-
-//   // Matching strategy
-//   if (e.target.classList.contains('nav__link')) {
-//     const id = e.target.getAttribute('href');
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   }
-// });
 
 
 

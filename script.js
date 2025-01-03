@@ -85,7 +85,34 @@ btnScrollTo.addEventListener('click',function(e){
   section1.scrollIntoView({behavior :'smooth'});
 });
 
-//////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+// Event Delegation implementing page 
+// Page navigation
+
+document.querySelectorAll('.nav__link').forEach((el)=>{
+  el.addEventListener('click',function(e){
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+    console.log(id);
+
+    document.querySelector(id).scrollIntoView({behavior : 'smooth'});
+  });
+});
+
+// Better way to do it using event delegation
+// 1 .Add event listener to common parent element
+// 2 .Determine what element the event 
+
+document.querySelector('.nav__links').addEventListener('click',function(el){
+  el.preventDefault();
+   
+  // matching strategy // this ==+ e.target
+
+  if(this.classList.contains('.nav__link')){
+   const id = this.getAttribute('href');
+   document.querySelector(id).scrollIntoView({behavior : 'Smooth'});
+  };
+});
 
 
 
@@ -266,15 +293,76 @@ logo.classList.remove('c');
 logo.classList.toggle('c');
 logo.classList.contains('c');
 
-
 */
 /////////////////////////////////////////////////////////////
 
 
+/*
+
+//EVENT PROPOGATION EXAMPLE (Event Propagation in Practice) => 
+
+const randomInt = (min ,max)=>
+  Math.floor(Math.random() * (max -min + 1) + min);
+
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+//  console.log(randomColor(0,255));
+document.querySelector('.nav__link').addEventListener('click',function(e){
+  this.style.backgroundColor =randomColor();
+  // e.target is eventtarget where the click happend current target will be different 
+  // this keyword and e.target is same 
+  console.log(e.target ,e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  // STOP PROPOGATION
+  e.stopPropagation();
+  
+  //  WORK WHERE MULTIPLE HANDLER ATTACHED TO SINGLE CLASS 
+  // e.stopImmediatePropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click',function(e){
+    this.style.backgroundColor =randomColor();
+    console.log(e.target ,e.currentTarget);
+  
+});
+document.querySelector('.nav').addEventListener('click',function(e){
+    this.style.backgroundColor =randomColor();
+     console.log(e.target ,e.currentTarget);
+},true);
+// true and false as third flag variable  in addeventlistner for capaturing phas event occour.
+
+*/
 
 
 
 
+
+
+
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   e.preventDefault();
+
+//   // Matching strategy
+//   if (e.target.classList.contains('nav__link')) {
+//     const id = e.target.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   }
+// });
 
 
 

@@ -120,9 +120,40 @@ document.querySelector('.nav__links').addEventListener('click',function(e){
 
 
 
-///////////////////////////////////////
+/////////////////////////////////////////////////////////
 // Tabbed component
 
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+  // not good to attached eventlistener at every tab
+// tabs.forEach(t=>t.addEventListener('click',()=>{
+//   console.log('tab');
+// }));
+
+// using event delegation
+tabsContainer.addEventListener('click',function(e){
+  // matching parent strategy (button)
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+
+
+   // Guard clause ==> null in container no matching parent
+   // if null return otherwise rest of code will exexute.
+  if(!clicked)return;
+
+//  Remove active classes
+  tabs.forEach(t=>t.classList.remove('operations__tab--active'));
+
+
+
+
+
+  // Activating tab
+  clicked.classList.add('operations__tab--active');
+
+})
 
 
 
@@ -133,15 +164,6 @@ document.querySelector('.nav__links').addEventListener('click',function(e){
 
 
 
-// const tabs = document.querySelectorAll('.operations__tab');
-// const tabsContainer = document.querySelector('.operations__tab-container');
-// const tabsContent = document.querySelectorAll('.operations__content');
-
-// tabsContainer.addEventListener('click', function (e) {
-//   const clicked = e.target.closest('.operations__tab');
-
-//   // Guard clause
-//   if (!clicked) return;
 
 //   // Remove active classes
 //   tabs.forEach(t => t.classList.remove('operations__tab--active'));
@@ -159,65 +181,9 @@ document.querySelector('.nav__links').addEventListener('click',function(e){
 
 
 
-/////////////////////////////////////////////////////////
-// Reference lacture for 
-// ------------- DOM TRAVERSING ------------
-
-const h1= document.querySelector('h1');
-
-// GOING DOWNWORDS (---DEEPER IN DOM SELECTING)
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
-
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color ='orange';
-
-
-// GOING UPWARDS : SELECTING THE PARENT
-
-console.log(h1.parentElement);
-console.log(h1.parentNode);
-
-h1.closest('.header').style.background ="var(--gradient-secondary)";
-h1.closest('h1').style.background ="var(--gradient-primary)";
-
-//GOING SIDEWAYS : SIBLINGS
-
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling.style.color ='white');
-
-console.log(h1.parentElement.children);
-
-[...h1.parentElement.children].forEach(function(e){
-  if(e!== h1){
-    e.style.transform= 'scale(0.5)';
-  }
-})
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////////////////
 /*
 
 /////////////////////////////////////////////////////////////
@@ -252,7 +218,7 @@ console.log(allButtons);
 console.log(document.getElementsByClassName('btn'));
 
 
-//////////////////////////////////////////////
+///////////////////////////////////////////////////
 
 // creating and inserting element 
 
@@ -281,7 +247,7 @@ const displayMovements = function(movements ,sort=false){
  });
 };
 
-
+/////////////////////////////////////////////////////////
 //-------------------------------------------------
 // 2 way to creating element 
 
@@ -314,6 +280,7 @@ document.querySelector('.btn-close--cookie').addEventListener('click',()=>{
   // message.parentElement.removeChild(message);
 });
 
+/////////////////////////////////////////////////////////
 //----------------------------------------------------------
 // STYLES ATTRIBTES AND CLASSES IN DOM
 
@@ -381,8 +348,6 @@ logo.classList.contains('c');
 
 */
 /////////////////////////////////////////////////////////////
-
-
 /*
 
 //EVENT PROPOGATION EXAMPLE (Event Propagation in Practice) => 
@@ -422,7 +387,45 @@ document.querySelector('.nav').addEventListener('click',function(e){
 */
 
 
+/*
 
+/////////////////////////////////////////////////////////
+// Reference lacture for 
+// ------------- DOM TRAVERSING ------------
+// walking through the DOM 
+// we can select an element based on another element 
+const h1= document.querySelector('h1');
+
+// GOING DOWNWORDS (---DEEPER IN DOM SELECTING)
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color ='orange';
+
+// GOING UPWARDS : SELECTING THE PARENT
+
+console.log(h1.parentElement);
+console.log(h1.parentNode);
+
+h1.closest('.header').style.background ="var(--gradient-secondary)";
+h1.closest('h1').style.background ="var(--gradient-primary)";
+
+//GOING SIDEWAYS : SIBLINGS
+
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling.style.color ='white');
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(function(e){
+  if(e!== h1){
+    e.style.transform= 'scale(0.5)';
+  }
+})
+
+*/
+/////////////////////////////////////////////////////////
 
 
 

@@ -159,39 +159,36 @@ document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList
 //////////////////////////////////////////////////////////
 // Menu fade animation
 
-const handleHover =function(e){
-  if(e.target.classList.contains('nav__link')){
-   const link =e.target;
-   const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-   const logo = link.closest('.nav').querySelector('img');
-   siblings.forEach(el=>{
-    if(el!==link) el.style.opacity = this;
-   });
-   logo.style.opacity = this;
-}
+const handleHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
 };
 
+// Passing "argument" into handler
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
 
-nav.addEventListener('mouseover',handleHover.bind(0.5));
-nav.addEventListener('mouseout',handleHover.bind(1));
-//--------------
+///////////////////////////////////////
+// Sticky navigation: 
 
-// const handleHover = function (e) {
-//   if (e.target.classList.contains('nav__link')) {
-//     const link = e.target;
-//     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-//     const logo = link.closest('.nav').querySelector('img');
+const initialCoords = section1.getBoundingClientRect();
+window.addEventListener('scroll',function(e){
+  // console.log(window.scrollY);
+  if(this.window.scrollY >initialCoords.top){
+   nav.classList.add('sticky');
+  } else nav.classList.remove('sticky');
+});
 
-//     siblings.forEach(el => {
-//       if (el !== link) el.style.opacity = this;
-//     });
-//     logo.style.opacity = this;
-//   }
-// };
 
-// // Passing "argument" into handler
-// nav.addEventListener('mouseover', handleHover.bind(0.5));
-// nav.addEventListener('mouseout', handleHover.bind(1));
+
 
 
 /*
@@ -470,6 +467,10 @@ console.log(h1.parentElement.children);
 //    logo.style.opacity = 1;
 // };
 // });
+
+////////////////////////////////////////////////////////////////
+
+
 
 
 

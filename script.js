@@ -136,47 +136,25 @@ const tabsContent = document.querySelectorAll('.operations__content');
 tabsContainer.addEventListener('click',function(e){
   // matching parent strategy (button)
   const clicked = e.target.closest('.operations__tab');
-  console.log(clicked);
+  // console.log(clicked);
 
 
    // Guard clause ==> null in container no matching parent
    // if null return otherwise rest of code will exexute.
   if(!clicked)return;
 
-//  Remove active classes
+  
+   //  Remove active classes
   tabs.forEach(t=>t.classList.remove('operations__tab--active'));
-
-
-
-
+  tabsContent.forEach(c=>c.classList.remove('operations__content--active'));
 
   // Activating tab
   clicked.classList.add('operations__tab--active');
 
+  //Activate content area 
+  // console.log(clicked.dataset.tab);
+document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
 })
-
-
-
-
-
-
-
-
-
-
-
-//   // Remove active classes
-//   tabs.forEach(t => t.classList.remove('operations__tab--active'));
-//   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
-
-//   // Activate tab
-//   clicked.classList.add('operations__tab--active');
-
-//   // Activate content area
-//   document
-//     .querySelector(`.operations__content--${clicked.dataset.tab}`)
-//     .classList.add('operations__content--active');
-// });
 
 
 

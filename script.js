@@ -153,7 +153,8 @@ tabsContainer.addEventListener('click',function(e){
 
   //Activate content area 
   // console.log(clicked.dataset.tab);
-document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
+document.querySelector(`.operations__content--${clicked.dataset.tab}`)
+.classList.add('operations__content--active');
 })
 
 //////////////////////////////////////////////////////////
@@ -179,13 +180,63 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 ///////////////////////////////////////
 // Sticky navigation: 
 
-const initialCoords = section1.getBoundingClientRect();
-window.addEventListener('scroll',function(e){
-  // console.log(window.scrollY);
-  if(this.window.scrollY >initialCoords.top){
-   nav.classList.add('sticky');
-  } else nav.classList.remove('sticky');
-});
+// const initialCoords = section1.getBoundingClientRect();
+// window.addEventListener('scroll',function(e){
+//   // console.log(window.scrollY);
+//   if(this.window.scrollY >initialCoords.top){
+//    nav.classList.add('sticky');
+//   } else nav.classList.remove('sticky');
+// });
+
+
+///////////////////////////////////////
+// Sticky navigation: Intersection Observer API
+
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function(entire){
+  const [entry]= entire;
+  console.log(entry);
+  if(!entry.isIntersecting)nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+}
+
+
+ const headerObserver = new IntersectionObserver (stickyNav,{
+  root :null,
+  threshold :0,
+  // rootMargin :'-90px'
+  rootMargin :`${-navHeight}px`
+
+ });
+ headerObserver.observe(header);
+ 
+
+
+
+
+
+// const header = document.querySelector('.header');
+// const navHeight = nav.getBoundingClientRect().height;
+
+// const stickyNav = function (entries) {
+//   const [entry] = entries;
+//   // console.log(entry);
+
+//   if (!entry.isIntersecting) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// };
+
+// const headerObserver = new IntersectionObserver(stickyNav, {
+//   root: null,
+//   threshold: 0,
+//   rootMargin: `-${navHeight}px`,
+// });
+
+// headerObserver.observe(header);
+
+
 
 
 
@@ -468,7 +519,33 @@ console.log(h1.parentElement.children);
 // };
 // });
 
-////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////
+// Sticky navigation: Intersection Observer API
+
+
+// const obsCallback = function(entires ,observer){
+//    entires.forEach(entry=>{
+//   console.log(entry);
+     // add class and condition isIntersection true or false
+//    });
+// };
+
+
+
+// const obsOptions ={
+//   root :null,      // viewport 
+//   threshold : 0.1 // [0.1,0.2]
+//  rootMargin: '-90px'
+// };
+
+
+
+// const observe = new IntersectionObserver(obsCallback ,obsOptions);
+// observe.observe(section1);
+
 
 
 

@@ -217,11 +217,13 @@ const stickyNav = function(entire){
 const allSection = document.querySelectorAll('.section');
 
 const revelSection = function(entire ,observe){
-  const [entry]= entire;
-  console.log(entry);
-   if (!entry.isIntersecting) return;
-  entry.target.classList.remove('section--hidden');
-   observe.unobserve(entry.target)
+  // const [entry]= entire;
+  // console.log(entry);
+  entire.forEach(entry=>{
+    if (!entry.isIntersecting) return;
+    entry.target.classList.remove('section--hidden');
+    observe.unobserve(entry.target)
+  })
 };
 
 const sectionObserver = new IntersectionObserver(revelSection ,{

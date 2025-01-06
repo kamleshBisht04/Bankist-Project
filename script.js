@@ -217,13 +217,12 @@ const stickyNav = function(entire){
 const allSection = document.querySelectorAll('.section');
 
 const revelSection = function(entire ,observe){
-  // const [entry]= entire;
-  // console.log(entry);
-  entire.forEach(entry=>{
-    if (!entry.isIntersecting) return;
-    entry.target.classList.remove('section--hidden');
-    observe.unobserve(entry.target)
-  })
+    entire.forEach(entry=>{
+      // not intersectiong return gaurd clause
+      if (!entry.isIntersecting) return;
+      entry.target.classList.remove('section--hidden');
+      observe.unobserve(entry.target);
+    });
 };
 
 const sectionObserver = new IntersectionObserver(revelSection ,{
@@ -554,7 +553,29 @@ console.log(h1.parentElement.children);
 // const observe = new IntersectionObserver(obsCallback ,obsOptions);
 // observe.observe(section1);
 
+////////////////////////////////////////////////////////////
+// ---------------entry k badle m entries ko check for all section
 
+// const allSections = document.querySelectorAll('.section');
+
+// const revealSection = function (entries, observer) {
+//   const [entry] = entries;
+
+//   if (!entry.isIntersecting) return;
+
+//   entry.target.classList.remove('section--hidden');
+//   observer.unobserve(entry.target);
+// };
+
+// const sectionObserver = new IntersectionObserver(revealSection, {
+//   root: null,
+//   threshold: 0.15,
+// });
+
+// allSections.forEach(function (section) {
+//   sectionObserver.observe(section);
+//   section.classList.add('section--hidden');
+// });
 
 
 

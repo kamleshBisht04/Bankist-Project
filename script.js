@@ -264,34 +264,55 @@ imgTargets.forEach(img =>imgObserver.observe(img));
 
 
 
+///////////////////////////////////////////////////
+///////////////////////////////////////
+// Slider
 
-// const imgTargets = document.querySelectorAll('img[data-src]');
+const slides= document.querySelectorAll('.slide');
+const slider = document.querySelector('.slider');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
 
-// const loadImg = function (entries, observer) {
-//   const [entry] = entries;
+let curSlide = 0;
+const maxSlide = slides.length;
 
-//   if (!entry.isIntersecting) return;
-
-//   // Replace src with data-src
-//   entry.target.src = entry.target.dataset.src;
-
-//   entry.target.addEventListener('load', function () {
-//     entry.target.classList.remove('lazy-img');
-//   });
-
-//   observer.unobserve(entry.target);
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg, {
-//   root: null,
-//   threshold: 0.8,
-//   rootMargin: '200px',
-// });
-
-// imgTargets.forEach(img => imgObserver.observe(img));
+slider.style.transform ='scale(0.4) translateX(-800px)';
+slider.style.overflow = 'visible';
 
 
+const goToSlide = function(slide){
+slides.forEach((s,i)=>{
+    s.style.transform = `translateX(${100 *(i-slide)}%)`;
+    //let curSlide = 1 =>  -100% 0% 100% 200%
+  });
+};
 
+goToSlide(0);
+
+
+// Next slide 
+const nextSlide = function(){
+if(curSlide ===maxSlide-1){
+ curSlide =0
+}else{
+curSlide++;
+}
+  goToSlide(curSlide);
+}
+
+// previous slide -1 is becoz node is not index based
+const prevSlide = function(){
+  if(curSlide===0){
+    curSlide=maxSlide-1;
+  }else{
+    curSlide--;
+  }
+  goToSlide(curSlide);
+}
+
+
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click',prevSlide)
 
 
 

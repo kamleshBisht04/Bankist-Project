@@ -272,12 +272,16 @@ const slides= document.querySelectorAll('.slide');
 const slider = document.querySelector('.slider');
 const btnLeft = document.querySelector('.slider__btn--left');
 const btnRight = document.querySelector('.slider__btn--right');
+const dotContainer = document.querySelector('.dots');
+
 
 let curSlide = 0;
 const maxSlide = slides.length;
 
 // slider.style.transform ='scale(0.4) translateX(-800px)';
 // slider.style.overflow = 'visible';
+
+
 
 
 const goToSlide = function(slide){
@@ -312,6 +316,16 @@ const prevSlide = function(){
 
 btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click',prevSlide);
+
+
+
+document.addEventListener('keydown',function(e){
+  // if and else or sort circiting version
+    if(e.key==='ArrowLeft')prevSlide();
+    e.key === 'ArrowRight' && nextSlide(); 
+});
+ 
+
 
 
 

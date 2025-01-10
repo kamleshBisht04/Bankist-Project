@@ -467,6 +467,7 @@ h4{
   display: flex;
 }
 
+/* creating via javascript */
 .dots__dot {
   border: none;
   background-color: #b9b9b9;

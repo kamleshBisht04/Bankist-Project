@@ -319,6 +319,7 @@ btnLeft.addEventListener('click',prevSlide);
 
 
 
+// for keyboard event left and right
 document.addEventListener('keydown',function(e){
   // if and else or sort circiting version
     if(e.key==='ArrowLeft')prevSlide();

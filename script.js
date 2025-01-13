@@ -255,9 +255,9 @@ const loadImg = function(entire,observe){
 
 
 const imgObserver = new IntersectionObserver(loadImg,{
-  root :null,
-  threshold :0.8, //0
-  rootMargin :'200px',
+  root :null,                
+  threshold :0.8,           //   => 0,1 ,2 ,3   
+  rootMargin :'200px',         
 });
 
 imgTargets.forEach(img =>imgObserver.observe(img));
@@ -265,7 +265,7 @@ imgTargets.forEach(img =>imgObserver.observe(img));
 
 
 ///////////////////////////////////////////////////
-///////////////////////////////////////
+//////////////////////////////////////////////////
 // Slider
 
 const slides= document.querySelectorAll('.slide');
@@ -282,6 +282,13 @@ const maxSlide = slides.length;
 // slider.style.overflow = 'visible';
 
 
+const createDots = function(){
+  slides.forEach(function(_,i){
+   dotContainer.insertAdjacentHTML('beforeend',`<button class="dots__dot" data-slide="${i}"></button>`);
+  });
+};
+
+createDots();
 
 
 const goToSlide = function(slide){
@@ -302,7 +309,7 @@ if(curSlide ===maxSlide-1){
 curSlide++;
 }
   goToSlide(curSlide);
-}
+};
 
 // previous slide -1 is becoz node is not index based
 const prevSlide = function(){
@@ -312,7 +319,8 @@ const prevSlide = function(){
     curSlide--;
   }
   goToSlide(curSlide);
-}
+};
+
 
 btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click',prevSlide);

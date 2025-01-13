@@ -288,7 +288,13 @@ const createDots = function(){
   });
 };
 
-createDots();
+
+const activateDot = function(slide){
+  document.querySelectorAll('.dots__dot').forEach((dot)=>
+   dot.classList.remove('dots__dot--active'));
+  
+  document.querySelector(`.dots__dot[data-slide ="${slide}"]`).classList.add('dots__dot--active');
+};
 
 
 const goToSlide = function(slide){
@@ -297,8 +303,6 @@ slides.forEach((s,i)=>{
     //let curSlide = 1 =>  -100% 0% 100% 200%
   });
 };
-
-goToSlide(0);
 
 
 // Next slide 
@@ -309,6 +313,7 @@ if(curSlide ===maxSlide-1){
 curSlide++;
 }
   goToSlide(curSlide);
+  activateDot(curSlide);
 };
 
 // previous slide -1 is becoz node is not index based
@@ -319,11 +324,22 @@ const prevSlide = function(){
     curSlide--;
   }
   goToSlide(curSlide);
+  activateDot(curSlide);
 };
 
+// make initial vaule as function 
+const init = function(){
+  createDots();
+  goToSlide(0);
+  activateDot(0);
+}
 
+init();
+
+//Event handler
 btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click',prevSlide);
+
 
 
 
@@ -334,6 +350,15 @@ document.addEventListener('keydown',function(e){
     e.key === 'ArrowRight' && nextSlide(); 
 });
  
+
+dotContainer.addEventListener('click',function(e){
+  if(e.target.classList.contains('dots__dot')){
+    curSlide = Number(e.target.dataset.slide);
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  }
+});
+
 
 
 
@@ -709,18 +734,43 @@ console.log(h1.parentElement.children);
 
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
+
+
   //  rough learining phase for slider 
 
 // const slides= document.querySelectorAll('.slide');
 // const slider = document.querySelector('.slider');
 // const btnLeft = document.querySelector('.slider__btn--left');
 // const btnRight = document.querySelector('.slider__btn--right');
+// const dotContainer = document.querySelector('.dots');
+
 
 // let curSlide = 0;
 // const maxSlide = slides.length;
 
-// slider.style.transform ='scale(0.4) translateX(-800px)';
-// slider.style.overflow = 'visible';
+// // slider.style.transform ='scale(0.4) translateX(-800px)';
+// // slider.style.overflow = 'visible';
+
+
+// const createDots = function(){
+//   slides.forEach(function(_,i){
+//    dotContainer.insertAdjacentHTML('beforeend',`<button class="dots__dot" data-slide="${i}"></button>`);
+//   });
+// };
+
+// createDots();
+
+
+// const activateDot = function(slide){
+//   document.querySelectorAll('.dots__dot').forEach((dot)=>
+//    dot.classList.remove('dots__dot--active'));
+  
+//   document.querySelector(`.dots__dot[data-slide ="${slide}"]`).classList.add('dots__dot--active');
+// };
+
+//  activateDot(0);
+
+
 
 
 // const goToSlide = function(slide){
@@ -741,7 +791,8 @@ console.log(h1.parentElement.children);
 // curSlide++;
 // }
 //   goToSlide(curSlide);
-// }
+//   activateDot(curSlide);
+// };
 
 // // previous slide -1 is becoz node is not index based
 // const prevSlide = function(){
@@ -751,10 +802,30 @@ console.log(h1.parentElement.children);
 //     curSlide--;
 //   }
 //   goToSlide(curSlide);
-// }
+//   activateDot(curSlide);
+// };
+
 
 // btnRight.addEventListener('click', nextSlide);
-// btnLeft.addEventListener('click',prevSlide)
+// btnLeft.addEventListener('click',prevSlide);
+
+
+
+// // for keyboard event left and right
+// document.addEventListener('keydown',function(e){
+//   // if and else or sort circiting version
+//     if(e.key==='ArrowLeft')prevSlide();
+//     e.key === 'ArrowRight' && nextSlide(); 
+// });
+ 
+
+// dotContainer.addEventListener('click',function(e){
+//   if(e.target.classList.contains('dots__dot')){
+//     curSlide = Number(e.target.dataset.slide);
+//     goToSlide(curSlide);
+//     activateDot(curSlide);
+//   }
+// });
 
 
 

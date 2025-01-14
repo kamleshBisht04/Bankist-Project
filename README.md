@@ -69,6 +69,6 @@ Contributions are welcome! If you find any bugs or have suggestions for improvem
 
 ## License
 
-This project is licensed under the [Jonas Schmedtmann].
+This project is licensed under the [KAMLESH SINGH BISHT].
 
 ---

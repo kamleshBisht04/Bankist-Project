@@ -1,5 +1,6 @@
 # Bankist-Project
 Bankist is a minimalist banking website project that provides a simple and intuitive banking experience. It includes features such as instant transfers, loans, testimonials, and easy sign-up. Bankist is a frontend-based project that focuses on client-side development and advanced DOM manipulation techniques. Bankist is a fictional, minimalist online banking application that simulates a virtual bank.
+******
 ![heroes-section1](https://github.com/user-attachments/assets/bd6b3cb3-609f-41fb-b9ee-87fc0d1edd75)
 
 ## Table of Contents

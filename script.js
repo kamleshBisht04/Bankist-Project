@@ -187,8 +187,6 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 //    nav.classList.add('sticky');
 //   } else nav.classList.remove('sticky');
 // });
-
-
 ///////////////////////////////////////
 // Sticky navigation: Intersection Observer API
 
@@ -270,7 +268,6 @@ imgTargets.forEach(img =>imgObserver.observe(img));
 
 const slider = function(){
 
-  
   const slides= document.querySelectorAll('.slide');
   const btnLeft = document.querySelector('.slider__btn--left');
   const btnRight = document.querySelector('.slider__btn--right');
@@ -343,7 +340,6 @@ btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click',prevSlide);
 
 
-
 // for keyboard event left and right
 document.addEventListener('keydown',function(e){
   // if and else or sort circiting version
@@ -360,48 +356,15 @@ dotContainer.addEventListener('click',function(e){
   }
 });
 
-
-
 };
 slider();
 
 
-
-
-
-
-
-
-
-// const imgTargets = document.querySelectorAll('img[data-src]');
-
-// const loadImg = function (entries, observer) {
-//   const [entry] = entries;
-
-//   if (!entry.isIntersecting) return;
-
-//   // Replace src with data-src
-//   entry.target.src = entry.target.dataset.src;
-
-//   entry.target.addEventListener('load', function () {
-//     entry.target.classList.remove('lazy-img');
-//   });
-
-//   observer.unobserve(entry.target);
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg, {
-//   root: null,
-//   threshold: 0,
-//   rootMargin: '200px',
-// });
-
-// imgTargets.forEach(img => imgObserver.observe(img));
-
-
-
-
-
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
 
 
 
@@ -833,15 +796,37 @@ console.log(h1.parentElement.children);
 // });
 
 
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////
+// Lifecycle DOM Events
+
+
+// document.addEventListener('DOMContentLoaded', function (e) {
+//   console.log('HTML parsed and DOM tree built!', e);
+// });
+
+// window.addEventListener('load', function (e) {
+//   console.log('Page fully loaded', e);
+// });
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
 
 
 
 
 
-
-
-
-
+//***************************************************************** */
+//***************************************************************** */
+//***************************************************************** */
+//***************************************************************** */
 
 
 

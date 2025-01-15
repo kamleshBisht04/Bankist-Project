@@ -16,7 +16,7 @@ Bankist is a minimalist banking website project that provides a simple and intui
 - [Contributing](#contributing)
 - [License](#license)
 
-## Features
+### Features
 ![section 1 with lazy loding](https://github.com/user-attachments/assets/fa702943-e755-438d-90ac-bbcace07fe47)
 ![features-section](https://github.com/user-attachments/assets/a4470373-4baa-4f00-ab10-38cacfcd7132)
 
